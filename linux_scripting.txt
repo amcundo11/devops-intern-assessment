@@ -1,0 +1,17 @@
+Bash Script (disk_alert.sh):
+--------------------------------
+#!/bin/bash
+THRESHOLD=80
+USAGE=$(df / | grep / | awk '{print $5}' | sed 's/%//')
+
+if [ "$USAGE" -ge "$THRESHOLD" ]; then
+    echo "ALERT: Disk usage is at ${USAGE}%!"
+else
+    echo "Disk usage is at ${USAGE}%, all good."
+fi
+
+Explanation of command:
+--------------------------------
+chmod +x script.sh
+This command makes the file script.sh executable, 
+so you can run it with ./script.sh instead of bash script.sh
